@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SabeshLLC Translations | Professional Translation Services Worldwide</title>
+  <meta name="description" content="Accurate, certified and professional translations in over 100 languages. Document, legal, medical, certified and immigration translation services worldwide." />
+  <meta property="og:title" content="Professional Translation Services Worldwide" />
+  <meta property="og:description" content="Accurate, certified and professional translations in over 100 languages." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <img src="sabeshllc.jpeg" alt="SabeshLLC Translations logo" class="brand-logo" />
+        <span class="brand-name">SabeshLLC <span class="text-gradient">Translations</span></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#languages">Languages</a>
+        <a href="#quote">Quote</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <a href="#quote" class="btn btn-primary">Get a Quote</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#languages">Languages</a>
+      <a href="#quote">Quote</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg animate-gradient" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="floating-words" id="floatingWords" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="reveal hero-logo-wrap">
+          <div class="hero-logo-card">
+            <img src="sabeshllc.jpeg" alt="SabeshLLC Translations logo" />
+          </div>
+        </div>
+        <div class="hero-copy">
+          <h1 class="reveal">Professional Translation Services Worldwide</h1>
+          <p class="reveal" data-delay="120">Accurate, certified, and professional translations in over 100 languages.</p>
+          <div class="reveal hero-btns" data-delay="240">
+            <a href="#quote" class="btn btn-glass">Get Free Quote →</a>
+            <a href="#contact" class="btn btn-dark">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="section section-tight">
+      <div class="container trust-grid" id="trustGrid"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="reveal">
+          <img src="sabeshllc.jpeg" alt="SabeshLLC professional translation team collaborating" class="about-img" loading="lazy" />
+        </div>
+        <div class="reveal" data-delay="120">
+          <span class="eyebrow">About Us</span>
+          <h2>A global team you can trust</h2>
+          <p class="muted">SabeshLLC Translations is a premium language services company connecting people, businesses and institutions across borders. With certified, native-speaking linguists in over 100 languages, we deliver translations that are accurate, confidential and accepted everywhere.</p>
+          <p class="muted"><strong>Our mission</strong> is to make professional translation effortless — combining human expertise with rigorous quality assurance so your message is understood, exactly as intended, anywhere in the world.</p>
+          <a href="#services" class="btn btn-outline">Learn More →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-muted" id="services">
+      <div class="container">
+        <div class="heading reveal">
+          <span class="eyebrow">What We Do</span>
+          <h2>Featured Translation Services</h2>
+          <p class="muted">From certified documents to website localization, we cover every translation need.</p>
+        </div>
+        <div class="cards-grid" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section class="section" id="languages">
+      <div class="container">
+        <div class="heading reveal">
+          <span class="eyebrow">Languages</span>
+          <h2>We Translate 100+ Languages</h2>
+          <p class="muted">A few of the languages our certified native linguists work with every day.</p>
+        </div>
+        <div class="lang-grid" id="langGrid"></div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section">
+      <div class="stats-bg animate-gradient" aria-hidden="true"></div>
+      <div class="container stats-grid" id="statsGrid"></div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-muted">
+      <div class="container">
+        <div class="heading reveal">
+          <span class="eyebrow">Testimonials</span>
+          <h2>Trusted by Clients Worldwide</h2>
+        </div>
+        <div class="testimonial-grid" id="testimonialGrid"></div>
+      </div>
+    </section>
+
+    <!-- QUOTE CALCULATOR -->
+    <section class="section" id="quote">
+      <div class="container">
+        <div class="heading reveal">
+          <span class="eyebrow">Instant Pricing</span>
+          <h2>Estimate Your Translation Cost</h2>
+          <p class="muted">Get a transparent estimate in seconds — no commitment required.</p>
+        </div>
+        <div class="reveal quote-card">
+          <div class="quote-fields">
+            <label>Number of pages
+              <input type="number" id="pages" min="1" value="1" />
+            </label>
+            <label>Service type
+              <select id="serviceType">
+                <option value="1">Standard — $25/page</option>
+                <option value="1.5">Certified — $38/page</option>
+                <option value="2">Legal / Medical — $50/page</option>
+              </select>
+            </label>
+            <label>Urgency
+              <select id="urgency">
+                <option value="1">Standard (24–48h)</option>
+                <option value="1.5">Express (+50%)</option>
+                <option value="2">Same day (+100%)</option>
+              </select>
+            </label>
+            <hr />
+            <h4>Client Information</h4>
+            <label>Complete Name
+              <input type="text" id="clientName" placeholder="Complete Name" />
+            </label>
+            <label>Email
+              <input type="email" id="clientEmail" placeholder="Email" />
+            </label>
+            <label>Contact Phone
+              <input type="tel" id="clientPhone" placeholder="Contact Phone" />
+            </label>
+            <label>Address (optional)
+              <input type="text" id="clientAddress" placeholder="Address" />
+            </label>
+          </div>
+          <div class="quote-result">
+            <span>Estimated total</span>
+            <strong id="quoteTotal">$25</strong>
+            <button id="requestQuoteBtn" class="btn btn-primary">Request This Quote →</button>
+          </div>
+        </div>
+        <!-- Plantilla de factura (oculta) -->
+        <div id="invoiceTemplate" style="display:none; width:800px; padding:20px; font-family:Inter, sans-serif; background:#fff; color:#000;">
+          <div style="display:flex; align-items:center; gap:16px;">
+            <img src="sabeshllc.jpeg" alt="logo" style="width:110px; height:auto; object-fit:contain;" />
+            <div>
+              <h2>SabeshLLC Translations</h2>
+              <div>info@sabeshllc.com • +1 (800) 555-0192</div>
+              <div>1209 Orange Street, Wilmington, DE 19801, USA</div>
+            </div>
+          </div>
+          <hr style="margin:12px 0" />
+          <div id="invoiceMeta" style="margin-bottom:12px;"></div>
+          <table style="width:100%; border-collapse:collapse;">
+            <thead>
+              <tr>
+                <th style="text-align:left; padding:8px; border-bottom:1px solid #ddd">Descripción</th>
+                <th style="text-align:right; padding:8px; border-bottom:1px solid #ddd">Cantidad</th>
+                <th style="text-align:right; padding:8px; border-bottom:1px solid #ddd">Precio unidad</th>
+                <th style="text-align:right; padding:8px; border-bottom:1px solid #ddd">Total</th>
+              </tr>
+            </thead>
+            <tbody id="invoiceItems"></tbody>
+          </table>
+          <div style="display:flex; justify-content:flex-end; margin-top:12px;">
+            <div style="text-align:right; width:260px;">
+              <div>Subtotal: <span id="invSubtotal"></span></div>
+              <div>Urgency multiplier: <span id="invUrgency"></span></div>
+              <h3>Total: <span id="invTotal"></span></h3>
+            </div>
+          </div>
+          <div style="margin-top:16px; font-size:12px; color:#555">Factura generada por SabeshLLC Translations. Esta es una estimación y no constituye una factura fiscal oficial.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-muted" id="faq">
+      <div class="container">
+        <div class="heading reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list reveal" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="stats-bg animate-gradient" aria-hidden="true"></div>
+          <div class="cta-inner">
+            <h2>Need Professional Translation?</h2>
+            <p>Request your free quote today and get accurate, certified translations delivered on time.</p>
+            <ul class="cta-list">
+              <li>✓ Certified &amp; accepted</li>
+              <li>✓ 100+ languages</li>
+              <li>✓ Fast turnaround</li>
+            </ul>
+            <a href="mailto:info@sabeshllc.com" class="btn btn-glass">Request Free Quote →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="sabeshllc.jpeg" alt="SabeshLLC Translations logo" />
+        <p class="muted">Premium certified translation services in over 100 languages, worldwide.</p>
+      </div>
+      <div class="footer-contact muted">
+        <p>📧 sabeshllc@gmail.com</p>
+        <p>📞 +1 (267) 408-8233</p>
+        <p>📍 6951 Roosevelt blvd Philadelphia pa 19149</p>
+      </div>
+    </div>
+    <div class="container footer-bottom muted">© <span id="year"></span> SabeshLLC. All rights reserved.</div>
+  </footer>
+
+  <button class="chat-widget" id="chatWidget" aria-label="Live chat">💬</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

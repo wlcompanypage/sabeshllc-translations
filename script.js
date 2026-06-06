@@ -162,14 +162,171 @@ function sendQuoteByWhatsApp() {
   window.open(url, '_blank');
 }
 
+function sendSupportByWhatsApp() {
+  const phone = WHATSAPP_NUMBER.replace(/[^0-9]/g, '');
+  const message = "Hola, necesito ayuda de soporte o atención al cliente con SabeshLLC. ¿Podrían asistirme, por favor?";
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+
 $('#requestQuoteBtn').addEventListener('click', (e) => {
   e.preventDefault();
   sendQuoteByWhatsApp();
 });
 
 // ---------- Chat widget ----------
-$("#chatWidget").addEventListener("click", () => {
-  alert("👋 Hi! Live chat is a demo here. Email us at info@sabeshllc.com and we'll reply fast.");
+const chatPanel = $("#chatPanel");
+const chatSuggestions = $("#chatSuggestions");
+const chatMessages = $("#chatMessages");
+const chatInput = $("#chatInput");
+const chatForm = $("#chatForm");
+const chatClose = $("#chatClose");
+let chatOpened = false;
+
+const SUGGESTIONS = [
+  "¿Cómo calculo una cotización?",
+  "¿Qué servicios ofrecen?",
+  "¿Con qué idiomas trabajan?",
+  "¿Cómo contacto a SabeshLLC?",
+  "¿Qué es el servicio certificado?"
+];
+
+const addChatMessage = (text, sender) => {
+  const message = document.createElement("div");
+  message.className = `chat-message ${sender}`;
+  message.innerHTML = `<div class="chat-bubble">${text}</div>`;
+  chatMessages.appendChild(message);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+};
+
+const renderSuggestions = () => {
+  chatSuggestions.innerHTML = SUGGESTIONS.map((suggestion) =>
+    `<button type="button" class="chat-suggestion">${suggestion}</button>`
+  ).join("");
+};
+
+const handleSuggestion = (question) => {
+  addChatMessage(question, "user");
+  const response = getChatResponse(question);
+  addChatMessage(response.text, "bot");
+  if (response.target) {
+    setTimeout(() => scrollToSection(response.target), 200);
+  }
+};
+
+const openChat = () => {
+  chatPanel.classList.add("open");
+  chatPanel.setAttribute("aria-hidden", "false");
+  renderSuggestions();
+  if (!chatOpened) {
+    chatOpened = true;
+    addChatMessage("¡Hola! Soy el asistente virtual de SabeshLLC. Pregúntame sobre servicios, cotizaciones, idiomas o cómo usar la página.", "bot");
+    addChatMessage("Puedes tocar una pregunta sugerida para obtener una respuesta rápida.", "bot");
+  }
+  chatInput.focus();
+};
+
+const closeChat = () => {
+  chatPanel.classList.remove("open");
+  chatPanel.setAttribute("aria-hidden", "true");
+};
+
+const scrollToSection = (id) => {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
+const getChatResponse = (query) => {
+  const text = query.toLowerCase();
+  const serviceNames = SERVICES.map((s) => s.title).join(", ");
+  const languageNames = LANGUAGES.slice(0, 10).map((l) => l.name).join(", ");
+  const faqText = FAQS.map((f) => `- ${f.q}: ${f.a}`).join("\n");
+
+  if (/(cotiz|precios|precio|costo|quote|presupuest|estimar|tarifa|páginas|pages|urgencia|express|same day|mismo día)/i.test(text)) {
+    return {
+      text: "La calculadora de cotización funciona con tres campos: número de páginas, tipo de servicio y urgencia. El total se calcula automáticamente y puedes solicitarlo por WhatsApp haciendo clic en Request This Quote.",
+      target: "quote"
+    };
+  }
+
+  if (/(servicio|servicios|documento|documentos|legal|médic|medical|certific|certified|traducción|traducciones|translation|localizaci[oó]n|website|immigration)/i.test(text)) {
+    return {
+      text: `Ofrecemos estos servicios: ${serviceNames}. Para más detalles, ve a la sección "What We Do" en la página.`,
+      target: "services"
+    };
+  }
+
+  if (/(idioma|idiomas|languages|lengua|lenguas|español|english|franc[eé]s|deutsch|中文|عربية|portugu[eú]s|italiano|ruso|polaco|turco|coreano|japonés)/i.test(text)) {
+    return {
+      text: `Trabajamos con más de 100 idiomas. Algunos ejemplos son: ${languageNames}. Revisa la sección "Languages" para ver nuestra lista completa.`,
+      target: "languages"
+    };
+  }
+
+  if (/(faq|pregunta|preguntas|duda|preguntar|preguntar|ayuda|soporte|support)/i.test(text)) {
+    return {
+      text: `Estas son algunas respuestas frecuentes:\n${faqText}\nPuedes abrir la sección FAQ para leer todas las preguntas frecuentes.`,
+      target: "faq"
+    };
+  }
+
+  if (/(contacto|contactar|email|correo|whatsapp|tel|tel[eé]fono|phone|telefono|dirección|address|contact us)/i.test(text)) {
+    return {
+      text: "Puedes escribir a info@sabeshllc.com, llamar al +1 (267) 408-8233 o usar el botón Request Free Quote en la sección de contacto.",
+      target: "contact"
+    };
+  }
+
+  if (/(an[oñ]os|experiencia|equipo|mision|misión|empresa|SabeshLLC|nosotros|about|quién|quien)/i.test(text)) {
+    return {
+      text: "SabeshLLC Translations es una empresa global de servicios de traducción profesional, con traducciones certificadas, legales, médicas y de sitios web para más de 100 idiomas.",
+      target: "about"
+    };
+  }
+
+  if (/(página|sitio|usar|navegar|cómo funciona|como funciona|inicio|home|secciones)/i.test(text)) {
+    return {
+      text: "Navega con el menú superior: About, Services, Languages, Quote y FAQ. También puedes usar este chat para preguntar directamente sobre cualquiera de esas secciones.",
+      target: null
+    };
+  }
+
+  if (text.length < 3) {
+    return { text: "Escribe tu pregunta en una frase corta, por ejemplo: ¿Cómo cotizo un documento?", target: null };
+  }
+
+  return {
+    text: "Puedo responder preguntas sobre esta página: servicio, cotizaciones, idiomas, FAQ, contacto y cómo usar el sitio. Escríbeme algo como '¿Qué tipos de traducción tienen?' o '¿Cómo contacto a SabeshLLC?'.",
+    target: null
+  };
+};
+
+$("#chatWidget").addEventListener("click", sendSupportByWhatsApp);
+chatClose.addEventListener("click", closeChat);
+chatSuggestions.addEventListener("click", (event) => {
+  if (event.target.matches(".chat-suggestion")) {
+    handleSuggestion(event.target.textContent);
+  }
+});
+chatForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const value = chatInput.value.trim();
+  if (!value) return;
+  addChatMessage(value, "user");
+  chatInput.value = "";
+  const response = getChatResponse(value);
+  addChatMessage(response.text, "bot");
+  if (response.target) {
+    setTimeout(() => scrollToSection(response.target), 200);
+  }
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && chatPanel.classList.contains("open")) {
+    closeChat();
+  }
 });
 
 // ---------- Scroll reveal + counters ----------

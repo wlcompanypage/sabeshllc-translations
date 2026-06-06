@@ -236,7 +236,7 @@
               <li>✓ 100+ languages</li>
               <li>✓ Fast turnaround</li>
             </ul>
-            <a href="mailto:info@sabeshllc.com" class="btn btn-glass">Request Free Quote →</a>
+            <a href="#quote" class="btn btn-primary">Request Free Quote →</a>
           </div>
         </div>
       </div>
@@ -259,7 +259,23 @@
     <div class="container footer-bottom muted">© <span id="year"></span> SabeshLLC. All rights reserved.</div>
   </footer>
 
-  <button class="chat-widget" id="chatWidget" aria-label="Live chat">💬</button>
+  <button class="chat-widget" id="chatWidget" aria-label="Soporte por WhatsApp">💬</button>
+
+  <div class="chat-panel" id="chatPanel" aria-hidden="true">
+    <div class="chat-header">
+      <div>
+        <strong>SabeshLLC Assistant</strong>
+        <p>Te ayudo a usar la página y responder preguntas sobre servicios, cotización y contacto.</p>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Cerrar chat">✕</button>
+    </div>
+    <div class="chat-suggestions" id="chatSuggestions" aria-label="Preguntas sugeridas"></div>
+    <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+    <form class="chat-input-row" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Escribe tu pregunta..." aria-label="Escribe tu pregunta" autocomplete="off" />
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
   <script src="script.js"></script>
